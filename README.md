@@ -1,16 +1,20 @@
-# flutter_firestore
+# Flutter Firebase Example
 
-A new Flutter project.
+This is an application which displays a list of grocery items or strings stored and retrieved from firebase firestore. This app show the application of CROD operations/
+You can try an online demo here: https://gfg-flutter-story.web.app/#/
 
-## Getting Started
+> **Note:** sound doesn't work in the demo as the audio library the app uses doesn't work on the web
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+| Workout settings | Excercise period | Rest period |
+| ---------------- | ---------------- | ----------- |
+| ![](https://github.com/insin/tabata_timer/blob/master/screenshots/settings.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_exercise.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_rest.png)|
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| App settings | Light mode theme selection |
+| ------------ | -------------------------- |
+| ![](https://github.com/insin/tabata_timer/raw/master/screenshots/settings.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/light_theme.png) |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Night mode | Night mode workout |
+| ---------- | ------------------ |
+| ![](https://github.com/insin/tabata_timer/raw/master/screenshots/tabata_config_night.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_night.png) |
