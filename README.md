@@ -9,7 +9,7 @@ You can try an online demo here: https://gfg-flutter-story.web.app/#/
 
 | Workout settings | Excercise period | Rest period |
 | ---------------- | ---------------- | ----------- |
-| ![](https://github.com/insin/tabata_timer/blob/master/screenshots/settings.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_exercise.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_rest.png)|
+| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_exercise.png) | ![](https://github.com/insin/tabata_timer/raw/master/screenshots/workout_rest.png)|
 
 | App settings | Light mode theme selection |
 | ------------ | -------------------------- |
