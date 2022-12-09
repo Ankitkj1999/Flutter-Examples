@@ -12,7 +12,5 @@ You can try an online demo here: https://gfg-flutter-story.web.app/#/
 | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
 
 | Firestore | 
-| ------------ | -
+| ------------ | 
 | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
-
-|
