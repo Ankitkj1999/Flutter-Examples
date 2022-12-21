@@ -1,166 +1,217 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const FireStoreApp());
+void main(List<String> args) {
+  runApp(const CarouselApp());
 }
 
-class FireStoreApp extends StatefulWidget {
-  const FireStoreApp({Key? key}) : super(key: key);
+class CarouselApp extends StatefulWidget {
+  const CarouselApp({super.key});
 
   @override
-  _FireStoreAppState createState() => _FireStoreAppState();
+  State<CarouselApp> createState() => _CarouselAppState();
 }
 
-class _FireStoreAppState extends State<FireStoreApp> {
-  final textController = TextEditingController();
+class _CarouselAppState extends State<CarouselApp> {
+  int _currentIndex = 0;
+  List cardList = [const Item1(), Item2(), Item3(), Item4()];
+
+  List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
 
   @override
-  Widget build(BuildContext ctx) {
-    CollectionReference groceries =
-        FirebaseFirestore.instance.collection('groceries');
-
+  Widget build(BuildContext context) {
     return MaterialApp(
+      key: const Key('value'),
+      title: 'Flutter Card Carousel App',
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
       home: Scaffold(
-        resizeToAvoidBottomInset: true,
-
-        appBar: AppBar(
-          title: const Text(
-            "Grocery List",
-            textAlign: TextAlign.center,
-            style:
-                TextStyle(fontSize: 23, color: Color.fromARGB(221, 46, 46, 46)),
-          ),
-        ),
         body: Center(
-          child: StreamBuilder(
-              stream: groceries.orderBy('name').snapshots(),
-              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: Text('Loading'));
-                }
-                return ListView(
-                  children: snapshot.data!.docs.map((grocery) {
-                    return Center(
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.circle,
-                          size: 12,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    pauseAutoPlayOnTouch: true,
+                    aspectRatio: 2.0,
+                    onPageChanged: ((index, reason) {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    }),
+                  ),
+                  items: cardList.map((card) {
+                    return Builder(builder: (BuildContext context) {
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.30,
+                        width: MediaQuery.of(context).size.width,
+                        child: Card(
+                          color: Colors.amberAccent,
+                          child: card,
                         ),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.remove),
-                          onPressed: () {
-                            grocery.reference.delete();
-                          },
-                        ),
-                        title: Text(grocery['name']),
-                        // onLongPress: () {
-                        //   grocery.reference.delete();
-                        // },
+                      );
+                    });
+                  }).toList(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: map<Widget>(cardList, (index, url) {
+                    return Container(
+                      width: 10.0,
+                      height: 10.0,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 2.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _currentIndex == index
+                            ? Colors.blueAccent
+                            : Colors.grey,
                       ),
                     );
-                  }).toList(),
-                );
-              }),
+                  }),
+                ),
+              ]),
         ),
-        floatingActionButton: SingleChildScrollView(
-          child: Builder(
-            builder: (context) => FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (ctx) => AlertDialog(
-                    title: const Text(
-                      "Add Grocery",
-                      textAlign: TextAlign.center,
-                    ),
-                    content: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      color: const Color.fromARGB(255, 231, 231, 231),
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 12),
-                        child: TextFormField(
-                          controller: textController,
-                          decoration: const InputDecoration(
-                            hintText: "Add your item here...",
-                            border: InputBorder.none,
-                            fillColor: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    actions: <Widget>[
-                      Center(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            groceries.add({
-                              'name': textController.text,
-                            });
-                            textController.clear();
-                            Navigator.of(ctx).pop();
-                          },
-                          child: const Text(
-                            "Add Item To List",
-                            style: TextStyle(color: Colors.black54),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-        // floatingActionButton: FloatingActionButton(
-        //   child: const Icon(Icons.save),
-        //   onPressed: () {
-        //     groceries.add({
-        //       'name': textController.text,
-        //     });
-        //     textController.clear();
-        //   },
-        // ),
       ),
     );
   }
+}
 
-  Future<dynamic> showTextField(BuildContext context) {
-    return showModalBottomSheet(
-      context: context,
-      // color is applied to main screen when modal bottom screen is displayed
-      barrierColor: Colors.greenAccent,
-      //background color for modal bottom screen
-      backgroundColor: Colors.yellow,
-      //elevates modal bottom screen
-      elevation: 10,
-      // gives rounded corner to modal bottom screen
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+class Item1 extends StatelessWidget {
+  const Item1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [
+              0.3,
+              1
+            ],
+            colors: [
+              Color(0xffff4000),
+              Color(0xffffcc66),
+            ]),
       ),
-      builder: (BuildContext context) {
-        // UDE : SizedBox instead of Container for whitespaces
-        return SizedBox(
-          height: 200,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text('GeeksforGeeks'),
-              ],
-            ),
-          ),
-        );
-      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const <Widget>[
+          Text("Data",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold)),
+          Text("Data",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.w600)),
+        ],
+      ),
+    );
+  }
+}
+
+class Item2 extends StatelessWidget {
+  const Item2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.3, 1],
+            colors: [Color(0xff5f2c82), Color(0xff49a09d)]),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const <Widget>[
+          Text("Data",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold)),
+          Text("Data",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.w600)),
+        ],
+      ),
+    );
+  }
+}
+
+class Item3 extends StatelessWidget {
+  const Item3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [
+              0.3,
+              1
+            ],
+            colors: [
+              Color(0xffff4000),
+              Color(0xffffcc66),
+            ]),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            'assets/flutter_dev.png',
+            height: 180.0,
+            fit: BoxFit.cover,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Item4 extends StatelessWidget {
+  const Item4({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const <Widget>[
+        Text("Data",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 22.0,
+                fontWeight: FontWeight.bold)),
+        Text("Data",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 17.0,
+                fontWeight: FontWeight.w600)),
+      ],
     );
   }
 }
