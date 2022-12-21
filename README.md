@@ -5,5 +5,5 @@ This is a basic flutter app the show the workkin of a flutter card carousel with
 
 | Carousel |
 | ![](carousel.gif ) |
-<img src="https://your-image-url.type" width="600">
+<img src="https://github.com/Ankitkj1999/Flutter-Examples/blob/flutter_crousel/carousel.gif?raw=true" width="600">
 
