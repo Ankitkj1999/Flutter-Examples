@@ -1,8 +1,7 @@
-# Flutter Firebase Example
-
-This is an application which displays a list of grocery items or strings stored and retrieved from firebase firestore. This app show the application of CROD operations.
+# Flutter Example
+This is a basic flutter app the show the workkin of a flutter card carousel with dots.
 
 ## Screenshots
 
 | Carousel |
-| ![](carousel.gif)(source =600x400) |
+| ![width="280"](carousel.gif) |
