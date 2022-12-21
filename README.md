@@ -4,4 +4,4 @@ This is a basic flutter app the show the workkin of a flutter card carousel with
 ## Screenshots
 
 | Carousel |
-| ![width="280"](carousel.gif) |
+| ![](carousel.gif| width=100) |
