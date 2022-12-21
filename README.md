@@ -5,4 +5,4 @@ This is an application which displays a list of grocery items or strings stored 
 ## Screenshots
 
 | Carousel |
-| ![](carousel.gif =500x) |
+| ![](carousel.gif)(source =600x400) |
