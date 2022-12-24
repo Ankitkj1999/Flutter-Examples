@@ -1,182 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const FireStoreApp());
-}
+void main() => runApp(MyApp());
 
-class FireStoreApp extends StatefulWidget {
-  const FireStoreApp({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
-  _FireStoreAppState createState() => _FireStoreAppState();
-}
-
-class _FireStoreAppState extends State<FireStoreApp> {
-  int itemNumber = 0;
-  final textController = TextEditingController();
-
-  @override
-  Widget build(BuildContext ctx) {
-    CollectionReference groceries =
-        FirebaseFirestore.instance.collection('groceries');
-
+  Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        resizeToAvoidBottomInset: true,
-
-        appBar: AppBar(
-          title: const Center(
-            child: Text(
-              "Grocery List",
-              style: TextStyle(
-                  fontSize: 23, color: Color.fromARGB(221, 46, 46, 46)),
-            ),
-          ),
-        ),
-        body: Center(
-          child: StreamBuilder(
-              stream: groceries.orderBy('name').snapshots(),
-              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: Text('Loading'));
-                }
-                return ListView(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                  children: snapshot.data!.docs.map((grocery) {
-                    itemNumber++;
-                    return Center(
-                      child: Column(
-                        children: [
-                          ListTile(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
-                            tileColor: const Color.fromARGB(255, 233, 231, 231),
-                            // leading: const Icon(
-                            //   Icons.circle,
-                            //   size: 12,
-                            // ),
-                            leading: Text(itemNumber.toString()),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.remove),
-                              onPressed: () {
-                                grocery.reference.delete();
-                              },
-                            ),
-                            title: Text(grocery['name']),
-                            // onLongPress: () {
-                            //   grocery.reference.delete();
-                            // },
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.005,
-                          ),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                );
-              }),
-        ),
-        floatingActionButton: SingleChildScrollView(
-          child: Builder(
-            builder: (context) => FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (ctx) => AlertDialog(
-                    title: const Text(
-                      "Add Grocery",
-                      textAlign: TextAlign.center,
-                    ),
-                    content: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      color: const Color.fromARGB(255, 231, 231, 231),
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 12),
-                        child: TextFormField(
-                          controller: textController,
-                          decoration: const InputDecoration(
-                            hintText: "Add your item here...",
-                            border: InputBorder.none,
-                            fillColor: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    actions: <Widget>[
-                      Center(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            groceries.add({
-                              'name': textController.text,
-                            });
-                            textController.clear();
-                            Navigator.of(ctx).pop();
-                          },
-                          child: const Text(
-                            "Add Item To List",
-                            style: TextStyle(color: Colors.black54),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-        // floatingActionButton: FloatingActionButton(
-        //   child: const Icon(Icons.save),
-        //   onPressed: () {
-        //     groceries.add({
-        //       'name': textController.text,
-        //     });
-        //     textController.clear();
-        //   },
-        // ),
-      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+}
 
-  Future<dynamic> showTextField(BuildContext context) {
-    return showModalBottomSheet(
-      context: context,
-      // color is applied to main screen when modal bottom screen is displayed
-      barrierColor: Colors.greenAccent,
-      //background color for modal bottom screen
-      backgroundColor: Colors.yellow,
-      //elevates modal bottom screen
-      elevation: 10,
-      // gives rounded corner to modal bottom screen
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+class MyHomePage extends StatefulWidget {
+  final String title;
+
+  const MyHomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
-      builder: (BuildContext context) {
-        // UDE : SizedBox instead of Container for whitespaces
-        return SizedBox(
-          height: 200,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                Text('GeeksforGeeks'),
-              ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'You have pushed the button this many times:',
             ),
-          ),
-        );
-      },
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
