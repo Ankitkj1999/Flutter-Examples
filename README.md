@@ -9,6 +9,6 @@ This is an application which displays a list of grocery items or strings stored 
 | ---------------- | ---------------- | 
 | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
 
-| Firestore | 
+| Firestore | New App UI |
 | ------------ | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
+| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | ![](https://raw.githubusercontent.com/Ankitkj1999/Flutter-Examples/Flutter_Firestore/screen_one.png) |
