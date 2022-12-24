@@ -34,62 +34,59 @@ class _CarouselAppState extends State<CarouselApp> {
         primarySwatch: Colors.amber,
       ),
       home: Scaffold(
-        body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CarouselWidget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: map<Widget>(cardList, (index, url) {
-                    return Container(
-                      width: 10.0,
-                      height: 10.0,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _currentIndex == index
-                            ? Colors.blueAccent
-                            : Colors.grey,
-                      ),
-                    );
-                  }),
-                ),
-              ]),
-        ),
+        body: NewCarousel(),
       ),
     );
   }
 
-  CarouselSlider CarouselWidget() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 200,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 3),
-        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
-        pauseAutoPlayOnTouch: true,
-        aspectRatio: 2.0,
-        onPageChanged: ((index, reason) {
-          setState(() {
-            _currentIndex = index;
-          });
-        }),
-      ),
-      items: cardList.map((card) {
-        return Builder(builder: (BuildContext context) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.30,
-            width: MediaQuery.of(context).size.width,
-            child: Card(
-              color: Colors.amberAccent,
-              child: card,
-            ),
-          );
-        });
-      }).toList(),
+  Center NewCarousel() {
+    return Center(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+          Widget>[
+        CarouselSlider(
+          options: CarouselOptions(
+            height: 200,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            pauseAutoPlayOnTouch: true,
+            aspectRatio: 2.0,
+            onPageChanged: ((index, reason) {
+              setState(() {
+                _currentIndex = index;
+              });
+            }),
+          ),
+          items: cardList.map((card) {
+            return Builder(builder: (BuildContext context) {
+              return SizedBox(
+                height: MediaQuery.of(context).size.height * 0.30,
+                width: MediaQuery.of(context).size.width,
+                child: Card(
+                  color: Colors.amberAccent,
+                  child: card,
+                ),
+              );
+            });
+          }).toList(),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: map<Widget>(cardList, (index, url) {
+            return Container(
+              width: 10.0,
+              height: 10.0,
+              margin:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _currentIndex == index ? Colors.blueAccent : Colors.grey,
+              ),
+            );
+          }),
+        ),
+      ]),
     );
   }
 }
