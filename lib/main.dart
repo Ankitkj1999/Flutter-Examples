@@ -16,6 +16,7 @@ class FireStoreApp extends StatefulWidget {
 }
 
 class _FireStoreAppState extends State<FireStoreApp> {
+  int itemNumber = 0;
   final textController = TextEditingController();
 
   @override
@@ -31,11 +32,12 @@ class _FireStoreAppState extends State<FireStoreApp> {
         resizeToAvoidBottomInset: true,
 
         appBar: AppBar(
-          title: const Text(
-            "Grocery List",
-            textAlign: TextAlign.center,
-            style:
-                TextStyle(fontSize: 23, color: Color.fromARGB(221, 46, 46, 46)),
+          title: const Center(
+            child: Text(
+              "Grocery List",
+              style: TextStyle(
+                  fontSize: 23, color: Color.fromARGB(221, 46, 46, 46)),
+            ),
           ),
         ),
         body: Center(
@@ -46,23 +48,37 @@ class _FireStoreAppState extends State<FireStoreApp> {
                   return const Center(child: Text('Loading'));
                 }
                 return ListView(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
                   children: snapshot.data!.docs.map((grocery) {
+                    itemNumber++;
                     return Center(
-                      child: ListTile(
-                        leading: const Icon(
-                          Icons.circle,
-                          size: 12,
-                        ),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.remove),
-                          onPressed: () {
-                            grocery.reference.delete();
-                          },
-                        ),
-                        title: Text(grocery['name']),
-                        // onLongPress: () {
-                        //   grocery.reference.delete();
-                        // },
+                      child: Column(
+                        children: [
+                          ListTile(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            tileColor: const Color.fromARGB(255, 233, 231, 231),
+                            // leading: const Icon(
+                            //   Icons.circle,
+                            //   size: 12,
+                            // ),
+                            leading: Text(itemNumber.toString()),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.remove),
+                              onPressed: () {
+                                grocery.reference.delete();
+                              },
+                            ),
+                            title: Text(grocery['name']),
+                            // onLongPress: () {
+                            //   grocery.reference.delete();
+                            // },
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.005,
+                          ),
+                        ],
                       ),
                     );
                   }).toList(),
