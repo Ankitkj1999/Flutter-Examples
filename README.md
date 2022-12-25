@@ -5,10 +5,8 @@ This is an application which displays a list of grocery items or strings stored 
 
 ## Screenshots
 
-| App | Working | 
-| ---------------- | ---------------- | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
+| S.No. | Name | URL |
+| ---------------- | ---------------- |---------------- | 
+| 1 | Flutter firestore implementation in a grocery app. (CRUD) | <a href="www.google.com">App</a> |
 
-| Firestore | 
-| ------------ | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
+
