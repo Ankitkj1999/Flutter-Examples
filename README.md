@@ -11,4 +11,4 @@ This is an application which displays a list of grocery items or strings stored 
 
 | Firestore | New App UI |
 | ---------------- | ---------------- | 
-| <img src="https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png" width="700"> | <img src="https://raw.githubusercontent.com/Ankitkj1999/Flutter-Examples/Flutter_Firestore/screen_one.png" width="200"> |
+| <img src="https://github.com/Ankitkj1999/Flutter-Examples/blob/Flutter_Firestore/screen_two.gif" width="700"> | <img src="https://raw.githubusercontent.com/Ankitkj1999/Flutter-Examples/Flutter_Firestore/screen_one.png" width="200"> |
