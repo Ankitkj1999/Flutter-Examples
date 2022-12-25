@@ -7,6 +7,6 @@ This is an application which displays a list of grocery items or strings stored 
 
 | S.No. | Name | URL |
 | ---------------- | ---------------- |---------------- | 
-| 1 | Flutter firestore implementation in a grocery app. (CRUD) | <a href="www.google.com">App</a> |
+| 1 | Flutter firestore implementation in a grocery app. (CRUD) | <a href="https://github.com/Ankitkj1999/Flutter-Examples/tree/Flutter_Firestore">App</a> |
 
 
