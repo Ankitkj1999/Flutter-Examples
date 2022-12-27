@@ -9,5 +9,5 @@ This is an application which displays a list of grocery items or strings stored 
 | ---------------- | ---------------- |---------------- | ---------------- | 
 | 1 | Flutter firestore implementation in a grocery app. (CRUD) | <a target="_blank" href="https://github.com/Ankitkj1999/Flutter-Examples/tree/Flutter_Firestore">App</a> | FireStore |
 | 2 | Flutter example app showing the implementation of REST API, showing user information from the JSONPlaceHolder API, which provides fake information. | <a target="_blank" href="https://github.com/Ankitkj1999/Flutter-Examples/tree/Flutter_RestAPI_JSON_Holder">App</a>| Rest API |
-
+| 3 | Flutter app example showing the implementation of caraousel cards with the help of the package carousel_slider. | <a target="_blank" href="https://github.com/Ankitkj1999/Flutter-Examples/tree/flutter_crousel">App</a> | Carousle |
 
