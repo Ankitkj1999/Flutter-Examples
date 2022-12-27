@@ -1,14 +1,11 @@
 # Flutter Firebase Example
 
-This is an application which displays a list of grocery items or strings stored and retrieved from firebase firestore. This app show the application of CROD operations.
+This is a flutter example application we have shown the interation of RestAPI. We will use the JSONPlaceHoldr API, which provides fake APIs, so that we can practice
+###<a href="https://blog.codemagic.io/rest-api-in-flutter/" target="_blank>Article</a> 
 
 
 ## Screenshots
 
-| App | Working | 
-| ---------------- | ---------------- | 
+| App | 
+| ---------------- |
 | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
-
-| Firestore | 
-| ------------ | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
