@@ -1,4 +1,4 @@
-# Flutter Firebase Example
+# Flutter REST API Example
 
 This is a flutter example application we have shown the interation of RestAPI. We will use the JSONPlaceHoldr API, which provides fake APIs, so that we can practice.
 <br>
