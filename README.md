@@ -1,14 +1,12 @@
-# Flutter Firebase Example
+# Flutter REST API Images | Posts Example
 
-This is an application which displays a list of grocery items or strings stored and retrieved from firebase firestore. This app show the application of CROD operations.
+This is a flutter example application we have shown the interation of RestAPI. I have use the JSONPlaceHoldr API, which provides fake APIs, so that we can practice. In this exmple we have used the images endpoint. I am able to get the response of the ID and Text part of the post but Image was showing <i><b>Error Code 403</i></b> there for the image place holder I used this website called <a href="https://picsum.photos/"><b><i>Lorem picum</i></b></a>.
+<br>
+<a href="https://blog.codemagic.io/rest-api-in-flutter/" target="_blank> Article</a> 
 
 
 ## Screenshots
 
-| App | Working | 
-| ---------------- | ---------------- | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
-
-| Firestore | 
-| ------------ | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
+| App | 
+| ---------------- |
+| ![](https://raw.githubusercontent.com/Ankitkj1999/Flutter-Examples/Flutter_RestAPI_JSON_Holder/restApi.gif) | 
