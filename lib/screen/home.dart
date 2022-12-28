@@ -38,24 +38,36 @@ class _HomeState extends State<Home> {
             )
           : GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1),
+                crossAxisCount: 2,
+              ),
               itemCount: _photoModel!.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                  padding: const EdgeInsets.all(8.0),
                   child: Container(
+                    color: Color.fromARGB(255, 255, 235, 171),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Column(
                       children: [
-                        Text(_photoModel![index].toString()),
-                        // Image(
-                        //   image: NetworkImage(_photoModel![index].thumbnailUrl),
-                        //   fit: BoxFit.cover,
-                        // ),
-                        Text(_photoModel![index].title),
+                        Text(_photoModel![index].id.toString()),
                         const SizedBox(
-                          height: 15,
-                        )
+                          height: 5,
+                        ),
+                        Image(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.1,
+                          image: NetworkImage(
+                              "https://picsum.photos/id/${_photoModel![index].id}/200/300"),
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          _photoModel![index].title,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ],
                     ),
                   ),
