@@ -1,6 +1,6 @@
 # Flutter Happy New Year App 
 
-## [https://github.com/alok2811/happy_new_year_2023/blob/main/README.md](Orignal Credit Alok)
+## [Orignal Credit Alok](https://github.com/alok2811/happy_new_year_2023/blob/main/README.md)
 <br></br>
 > This is a simple happy new year wishing flutter app showcasing animations. Below are the packages used in this project:
 1. get_it
