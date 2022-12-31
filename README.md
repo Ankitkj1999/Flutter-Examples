@@ -1,14 +1,18 @@
-# Flutter Firebase Example
+# Flutter Happy New Year App 
 
-This is an application which displays a list of grocery items or strings stored and retrieved from firebase firestore. This app show the application of CROD operations.
+## [https://github.com/alok2811/happy_new_year_2023/blob/main/README.md](Orignal Credit Alok)
+<br></br>
+> This is a simple happy new year wishing flutter app showcasing animations. Below are the packages used in this project:
+1. get_it
+2. animated_text_kit
+3. lottie
+4. animate_do
+<br>
+<a href="https://blog.codemagic.io/rest-api-in-flutter/" target="_blank> Article</a> 
 
 
 ## Screenshots
 
-| App | Working | 
-| ---------------- | ---------------- | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
-
-| Firestore | 
-| ------------ | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
+| App | 
+| ---------------- |
+| ![](output.gif) | 
