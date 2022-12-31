@@ -8,7 +8,7 @@
 3. lottie
 4. animate_do
 <br>
-<a href="https://blog.codemagic.io/rest-api-in-flutter/" target="_blank> Article</a> 
+<a href="https://blog.codemagic.io/rest-api-in-flutter/" target="_blank"> Article</a> 
 
 
 ## Screenshots
