@@ -1,14 +1,11 @@
-# Flutter Firebase Example
+# Flutter Blogger Blog Example
 
-This is an application which displays a list of grocery items or strings stored and retrieved from firebase firestore. This app show the application of CROD operations.
-
-
+This is a flutter blogger blog app make using blogger app showing inside a webview in flutter app using:
+> webview_widget
+<br>
+![https://callforcodeatlpu.blogspot.com/](Blog Link)
 ## Screenshots
 
-| App | Working | 
-| ---------------- | ---------------- | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_one.gif) | ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_two.gif)|
-
-| Firestore | 
-| ------------ | 
-| ![](https://raw.githubusercontent.com/Ankitkj1999/flutter_firestore_example/master/screen_three.png) | 
+| App |
+| ---------------- |
+|![](post.gif)|
